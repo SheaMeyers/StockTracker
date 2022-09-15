@@ -6,5 +6,5 @@ namespace StockTrackerApp.Data;
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
-    public DbSet<Stock> JobPost { get; set; }
+    public DbSet<Stock> Stock { get; set; }
 }

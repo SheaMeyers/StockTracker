@@ -10,7 +10,7 @@ namespace StockTrackerApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "JobPost",
+                name: "Stock",
                 columns: table => new
                 {
                     Symbol = table.Column<string>(type: "text", nullable: false),
@@ -27,14 +27,14 @@ namespace StockTrackerApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobPost", x => x.Symbol);
+                    table.PrimaryKey("PK_Stock", x => x.Symbol);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "JobPost");
+                name: "Stock");
         }
     }
 }

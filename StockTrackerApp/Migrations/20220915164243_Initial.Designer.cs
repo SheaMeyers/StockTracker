@@ -12,7 +12,7 @@ using StockTrackerApp.Data;
 namespace StockTrackerApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220915162302_Initial")]
+    [Migration("20220915164243_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace StockTrackerApp.Migrations
 
                     b.HasKey("Symbol");
 
-                    b.ToTable("JobPost");
+                    b.ToTable("Stock");
                 });
 #pragma warning restore 612, 618
         }

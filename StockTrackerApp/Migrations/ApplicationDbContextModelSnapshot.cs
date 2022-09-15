@@ -68,7 +68,7 @@ namespace StockTrackerApp.Migrations
 
                     b.HasKey("Symbol");
 
-                    b.ToTable("JobPost");
+                    b.ToTable("Stock");
                 });
 #pragma warning restore 612, 618
         }
