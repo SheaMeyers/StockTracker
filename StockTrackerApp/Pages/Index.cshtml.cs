@@ -1,19 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using StockTrackerApp.Data;
+using StockTrackerApp.Models;
 
 namespace StockTrackerApp.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    private readonly ApplicationDbContext _db;
+    public IEnumerable<Stock> Stocks { get; set; }
 
-    public IndexModel(ILogger<IndexModel> logger)
+    public IndexModel(ApplicationDbContext db)
     {
-        _logger = logger;
+        _db = db;
     }
 
     public void OnGet()
     {
-
+        Stocks = _db.Stock;
     }
 }
