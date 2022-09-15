@@ -1,14 +1,38 @@
 ﻿@page
 @model StockTrackerApp.Pages.IndexModel
 
-<div class="container">
-    @foreach (var stock in Model.Stocks)
-    {
-        <div class="card mb-3">
-            <div class="card-body">
-                <h4 class="card-title">@stock.Symbol</h4>
-                <p class="card-text">@stock.Name</p>
-            </div>
-        </div>
-    }
-</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">P/E Ratio</th>
+            <th scope="col">EV/EBITA</th>
+            <th scope="col">Free Cash Flow</th>
+            <th scope="col">Debt to Equity</th>
+            <th scope="col">Earnings Growth</th>
+            <th scope="col">Revenue Growth</th>
+            <th scope="col">Industry</th>
+            <th scope="col">Last Updated</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stock in Model.Stocks)
+        {
+            <tr class="table-dark">
+                <td>@stock.Symbol</td>
+                <td>@stock.Name</td>
+                <td>@stock.Price</td>
+                <td>@stock.PERatio</td>
+                <td>@stock.EvEbita</td>
+                <td>@stock.FreeCashFlow</td>
+                <td>@stock.DebtToEquity</td>
+                <td>@stock.EarningsGrowth</td>
+                <td>@stock.RevenueGrowth</td>
+                <td>@stock.Industry</td>
+                <td>@stock.LastUpdated</td>
+            </tr>
+        }
+    </tbody>
+</table>
