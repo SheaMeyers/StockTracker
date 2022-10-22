@@ -1,5 +1,6 @@
-using StockTrackerApp.Data;
 using Microsoft.EntityFrameworkCore;
+using StockTrackerApp.Models;
+using StockTrackerApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(
     builder.Configuration.GetConnectionString("DefaultConnection")
 ));
+
+ApiConfig.Domain = builder.Configuration.GetValue<string>("ApiConfig:Domain");
+ApiConfig.ApiKey = builder.Configuration.GetValue<string>("ApiConfig:ApiKey");
 
 var app = builder.Build();
 
@@ -27,5 +31,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+StockData.UpdateStockData();
 
 app.Run();
