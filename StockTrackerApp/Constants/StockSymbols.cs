@@ -4,8 +4,8 @@ public class StockSymbols {
     public static List<string> Symbols = new List<string>
     {
         "VOD",
-        // "BCS",
-        // "BP",
+        "BCS",
+        "BP",
         // "SAN",
         // "AAPL",
         // "INTC",

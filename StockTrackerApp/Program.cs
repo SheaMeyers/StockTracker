@@ -32,6 +32,10 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-StockData.UpdateStockData();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    StockData.UpdateStockData(db);
+}
 
 app.Run();
