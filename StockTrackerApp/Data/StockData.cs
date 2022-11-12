@@ -28,6 +28,11 @@ public static class StockData {
                 newStock = true;
             }
 
+            // With each field we effectively go through three steps
+            //  1. We get the value returned from the api, if none exists
+            //  2. We use the value that is already stored in the database, if this is not there
+            //  3. We save the value 'Unknown' to make it clear on the frontend that this data is not known.
+
             string newName = !String.IsNullOrWhiteSpace(body.data.shortName) ? body.data.shortName : stock.Name;
             stock.Name = !String.IsNullOrWhiteSpace(newName) ? newName : "Unknown";
             
