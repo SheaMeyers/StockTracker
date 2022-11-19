@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using StockTrackerApp.Data;
+using StockTrackerApp.Pages;
 using StockTrackerApp.Models;
 using Xunit;
 
@@ -12,7 +10,7 @@ public class IndexPageTests : IClassFixture<TestDatabaseFixture>
     public TestDatabaseFixture Fixture { get; }
 
     [Fact]
-    public void FirstTest()
+    public void TestIndexPage()
     {
         var context = Fixture.CreateContext();
 
@@ -44,6 +42,12 @@ public class IndexPageTests : IClassFixture<TestDatabaseFixture>
         });
         context.SaveChanges();
 
-        Assert.True(true);
+        var expectedMessages = context.Stock.ToList();
+
+        var pageModel = new IndexModel(context);
+        pageModel.OnGet();
+        var actualMessages = pageModel.Stocks.ToList();
+
+        Assert.Equal(expectedMessages, actualMessages);
     }
 }
