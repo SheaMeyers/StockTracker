@@ -4,10 +4,10 @@ using StockTrackerApp.Models;
 
 namespace StockTrackerApp.Data;
 
-public static class StockData {
-    public static void UpdateStockData(ApplicationDbContext db)
+public static class ApiData {
+    public static void UpdateStockDataFromApi(ApplicationDbContext db, List<string> symbols = null)
     {
-        List<string> symbols = StockSymbols.Symbols;
+        symbols = symbols ?? StockSymbols.Symbols;
         ApiInterface apiInterface = new ApiInterface();
 
         foreach(string symbol in symbols)
@@ -29,9 +29,9 @@ public static class StockData {
             }
 
             // With each field we effectively go through three steps
-            //  1. We get the value returned from the api, if none exists
-            //  2. We use the value that is already stored in the database, if this is not there
-            //  3. We save the value 'Unknown' to make it clear on the frontend that this data is not known.
+            //  We get the value returned from the api, if none exists then
+            //  We use the value that is already stored in the database, if this is not there then
+            //  We save the value 'Unknown' to make it clear on the frontend that this data is not known.
 
             string newName = !String.IsNullOrWhiteSpace(body.data.shortName) ? body.data.shortName : stock.Name;
             stock.Name = !String.IsNullOrWhiteSpace(newName) ? newName : "Unknown";

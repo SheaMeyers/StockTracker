@@ -36,7 +36,7 @@ if (builder.Configuration.GetValue<bool>("CallApi")) {
     using (var scope = app.Services.CreateScope())
     {
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-        StockData.UpdateStockData(db);
+        ApiData.UpdateStockDataFromApi(db);
     }
 }
 
