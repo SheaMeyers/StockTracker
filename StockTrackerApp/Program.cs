@@ -38,4 +38,10 @@ app.MapRazorPages();
 //     StockData.UpdateStockData(db);
 // }
 
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    SeedData.CreateStockData(db);
+}
+
 app.Run();
