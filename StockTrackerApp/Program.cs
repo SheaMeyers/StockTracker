@@ -32,16 +32,20 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-//     StockData.UpdateStockData(db);
-// }
+if (builder.Configuration.GetValue<bool>("CallApi")) {
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        StockData.UpdateStockData(db);
+    }
+}
 
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    SeedData.CreateStockData(db);
+if (builder.Configuration.GetValue<bool>("SeedData")) {
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        SeedData.CreateStockData(db);
+    }
 }
 
 app.Run();
