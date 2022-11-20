@@ -1,5 +1,3 @@
-using StockTrackerApp.Api;
-using StockTrackerApp.Constants;
 using StockTrackerApp.Models;
 
 namespace StockTrackerApp.Data;

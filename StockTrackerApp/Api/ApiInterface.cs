@@ -1,4 +1,3 @@
-using Microsoft.Extensions.Options;
 using StockTrackerApp.Models;
 
 namespace StockTrackerApp.Api;
